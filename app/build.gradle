@@ -1,5 +1,5 @@
-apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.android.databinding'
 
@@ -14,7 +14,7 @@ android {
     //noinspection GroovyAssignabilityCheck
     defaultConfig {
         applicationId       cfg.package
-        minSdkVersion       cfg.compileVersion
+        minSdkVersion       21
         targetSdkVersion    cfg.targetSdk
         versionCode         cfg.version_code
         versionName         cfg.version_name
@@ -31,6 +31,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '23.0.2'
+
+    dexOptions {
+        incremental = true;
+        preDexLibraries = false
+        javaMaxHeapSize "2g"
+    }
 }
 
 //noinspection GroovyAssignabilityCheck
